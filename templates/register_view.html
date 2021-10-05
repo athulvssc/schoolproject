@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text">
+                    <h1>SCHOOL REGISTER</h1>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>add details</h4>
+
+
+<form method="post" class="p-3 shadow" style=" box-shadow: 10px 5px 5px black;">
+    {% csrf_token %}
+
+    <div class="form-group">
+    <input class="form-control" type="text" name="e_id" placeholder="enter the id"><br>
+        </div>
+    <div class="form-group">
+    <input class="form-control" type="text" name="name" placeholder="enter the name"><br>
+        </div>
+    <div class="form-group">
+    <input class="form-control" type="text" name="age" placeholder="enter the age"><br>
+        </div>
+       <div class="form-group">
+
+    <input class="form-control" type="text" name="post" placeholder="enter the post"><br>
+            </div>
+     <div class="form-group">
+    <input class="form-control" type="text" name="salary" placeholder="enter the salary"><br>
+    </div>
+      <div class="form-group">
+    <input class="form-control" type="date" name="date" placeholder="enter the date"><br>
+    </div>
+
+    <input type="submit" class="btn btn-success">
+
+
+
+</form>
+
+
+</div>
+        <div class="col-md-6">
+            <h4>STAFF DETAILS</h4>
+            {% for i in obj1 %}
+
+            <div class="shadow card">
+            <div class="card-body">
+                <div class="card-title" style="color: blue">id :  {{i.e_id}} </div>
+                <p><b>name :  {{i.name}}</b></p>
+                <p><b>age :  {{i.age}}</b></p>
+                <p><b>post :  {{i.post}}</b></p>
+                <p><b>salary :  {{i.salary}} Rs</b></p>
+                <p><b>date :  {{i.date}}</b></p>
+
+                <a class="btn btn-danger" href="{% url 'delete' i.id %}">Delete</a>
+                <a class="btn btn-success" href="{% url 'update' i.id %}">Update</a>
+                </div>
+
+
+            </div><br>
+
+            {% endfor %}
+
+        </div>
+           </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
